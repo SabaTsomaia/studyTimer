@@ -15,11 +15,13 @@ header {
     font-weight: 200;
     margin-top: 30px;
 }
-header, button,h1,#task-title,#session-num {
+header, button,#task-title,#session-num {
     font-size: 1.6rem;
 }
-a{    color: #352e2b;
-    text-decoration: none; }
+a{
+    color: #352e2b;
+    text-decoration: none;
+}
 a:hover {
     text-decoration: none;
     cursor: pointer;
@@ -29,8 +31,7 @@ a:hover {
 }
 .mainContent > p {
     font-family: 'Kalam', cursive;
-    font-size: 60px;
-    
+    font-size: 60px;   
 }
 .buttons {
     margin: auto;
@@ -52,14 +53,20 @@ button {
 button:hover {
     cursor: pointer;
 }
-h1 {
-    color: #696969;
+h1,h2{
+    font-size: 1.4rem;
+    margin-top: 15px;
     font-family: 'Kalam', cursive;
+}
+h1{
+    color: #696969;
     font-weight: 400;
 }
-#time {
-    margin-top: 30px;
+h2 {
+    font-weight: 600;
+    color: #474747;
 }
+
 .task {
     margin: 20px auto;
     width: 400px;
@@ -75,18 +82,10 @@ h1 {
     text-decoration: line-through;
     opacity: .9;
 }
-
-#task-title{
+#task-title,#session-num {
     background-color: #101826;
     color: white;
     font-family: 'Kalam', cursive;
-    margin: 3px auto 0px 10px;
-}
-#session-num {
-    background-color: #101826;
-    color: white;
-    font-family: 'Kalam', cursive;
-    margin: 0 10px -5px 0;
 }
 img {
     cursor: pointer;
@@ -95,7 +94,6 @@ img {
     background-color: #101826;
     width: 30px;
 }
-
 
 /* task-settings*/
 .hidden {
@@ -125,13 +123,12 @@ img {
     z-index: 10;
     border-radius: 2px;
 }
-.task-settings > p{
+.task-settings > p {
     padding-top: 40px;
     font-family: 'Inter', sans-serif;
-    font-weight: 100;
+    font-weight: 200;
     font-size: 28px;
     background-color: white;
-    transition: cubic-bezier(.17,.67,.83,.67);
 }
 .time-session {
     display: flex;
