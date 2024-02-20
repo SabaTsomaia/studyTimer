@@ -15,5 +15,7 @@ const time = document.getElementById('time')
 const checkDone = document.getElementById('img-2')
 const addTask = document.getElementById('img-1')
 const taskDone = document.getElementById('circle-img')
+const taskNameInput = document.getElementById('task-name')
 
-export {taskSetting,overlay,addTask,taskDone,img,inputElements,taskContainer,delIcon,task,btn_start,btn_stop,btn_reset,time,checkDone}
+
+export {taskSetting,overlay,addTask,taskDone,img,inputElements,taskContainer,delIcon,task,btn_start,btn_stop,btn_reset,time,checkDone,taskNameInput}

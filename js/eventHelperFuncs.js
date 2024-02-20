@@ -1,14 +1,12 @@
 // Html Elements
 import * as HTML from './elements.js'
 
-var title = '';
-var timeCur = 0;
-var session = 0;
-var counter = 1;
+let title = '';
+let hours = 0;
+let minutes = 0;
 
 // ELEMENTS OF ACTIVE TASKS
-let activeTasks = []
-var activeTask = 1;
+const tasks = []
 
 export const toggleClass = function (mode) {
     if(mode === true) {
@@ -24,8 +22,6 @@ export const toggleClass = function (mode) {
     }
 }
 export const startBtn = function() {
-    if(activeTask <= 0)
-        return;
     timeCur -= 1;
     let seconds = 60;
 
@@ -52,16 +48,9 @@ export const resetBtn = function(){
 }
 
 export const taskCompleted = function(e) {
-    if(counter % 2 !== 0)
-    {
-        HTML.task.classList.add('completed');
-        counter++;
-    }else 
-    { 
-        HTML.task.classList.remove('completed');
-        counter++;
-        console.log(e);
-    }
+    /* 
+    Loop through the taskList and toggle: HTML.task.classList.add('completed');
+     */
 }
 
 export const deleteTask = function(e) {
@@ -69,21 +58,37 @@ export const deleteTask = function(e) {
     {
         e.target.closest('.task').remove();
     }
-    activeTask--;
+    for (let i = 0; i < tasks.length;i++) {
+        const element = tasks[i];
+        console.log(element);
+    }
+    removeTask()
 }
 
 
-export const generateTask = function (title,session){  
+export const generateTask = function (title){  
     const html = `<div class="task">
     <img src="icons/task_alt_FILL0_wght400_GRAD0_opsz24.svg" alt="tasks" class="imgIcons" id="img-2">
-        <p id="task-title">${title}</p>
-        <p id="session-num">0/${session}</p>
+        <p id="task-title" style="margin: 3px auto 0px 10px;">${title}</p>
     <img src="icons/delete_FILL0_wght400_GRAD0_opsz24.svg" alt="delete" class="imgIcons delIcon" id="img-3">
 </div>`
     HTML.taskContainer.insertAdjacentHTML('afterbegin',html);
-    HTML.h2.innerHTML = `Working on ${title.toUpperCase()}`;
-    activeTask++;
 }
+
+function addTask(title,hours,minutes){
+    const task = {
+        title: title,
+        hours: hours,
+        minutes: minutes
+    };
+
+    tasks.push(task)
+}
+
+function removeTask(){
+    tasks.pop();
+}
+
 
 export const clearInputs = function (checking) {
     HTML.inputElements.forEach((_,i) => {
@@ -96,29 +101,26 @@ export const clearInputs = function (checking) {
             }
             if(i == 1)
             {    
-                timeCur = HTML.inputElements[i].value;
+                hours = HTML.inputElements[i].value;
                 HTML.inputElements[i].value = '';
                 HTML.inputElements[i].placeholder= '00'
             }
             if(i == 2)
             {
-                session = HTML.inputElements[i].value;
+                minutes = HTML.inputElements[i].value;
                 HTML.inputElements[i].value = '';
-                HTML.inputElements[i].placeholder= '00';
-            }
-            if (i == 3)
-            {
-                breakTime = HTML.inputElements[i].value;
-                HTML.inputElements[i].value = '';
-                HTML.inputElements[i].placeholder= '00';
+                HTML.inputElements[i].placeholder= '00'
             }
         } 
     }); 
     if(checking == true){
-        generateTask(title,session);
-        HTML.time.textContent = `${timeCur}:00`
-        title = '';
+        generateTask(title);
+        addTask(title,hours,minutes)
+        title = 0
+        hours = 0
+        minutes = 0
     }
+
 }
 
 //export {toggleClass,clearInputs,startBtn,resetBtn,stopBtn,deleteTask,taskCompleted}

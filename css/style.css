@@ -147,6 +147,10 @@ img {
     outline: none;
     color: black;
 }
+input.placeholder-red::placeholder {
+    color: red;
+}
+
 .time-session > input {
     width: 95px; 
     text-align: center;

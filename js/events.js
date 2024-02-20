@@ -1,30 +1,30 @@
 // HTML Elements
 import * as HTML from "./elements.js"
 // Functions 
-import * as Help from './eventHelperFuncs.js'
+import * as HELP from './eventHelperFuncs.js'
 
-let value1 = 0,value2 = 0,value3 = 0;
+let value1 = 0,value2 = 0;
 let checking=true; 
 
 
 HTML.btn_start.addEventListener('click',() => {
-    Help.startBtn();
+    HELP.startBtn();
 })
 
 HTML.btn_reset.addEventListener('click',() => {
-    Help.resetBtn();
+    HELP.resetBtn();
 })
 
 HTML.btn_stop.addEventListener('click',() => {
-    Help.stopBtn();
+    HELP.stopBtn();
 })
 
 HTML.taskContainer.addEventListener('click',(e) => {
-    Help.deleteTask(e);
+    HELP.deleteTask(e);
 });
 
 HTML.checkDone.addEventListener('click',(e) => {
-    Help.taskCompleted(e);
+    HELP.taskCompleted(e);
 })
 
 HTML.img.forEach((element) => {
@@ -46,15 +46,13 @@ HTML.img.forEach((element) => {
 
             // second line of inputs
             case element.classList.contains('up-arrow2'):
-               if(value2 > 9)
-                    value2 = 9;
-               HTML.inputElements[2].value = ++value2;
+                HTML.inputElements[2].value = ++value2;
                 break;
 
             case element.classList.contains('down-arrow2'):
                 if(!value2 == 0)    
                     HTML.inputElements[2].value = --value2;
-                    if(inputElements[2].value == 0){ 
+                    if(HTML.inputElements[2].value == 0){ 
                         HTML.inputElements[2].value = '';
                         HTML.inputElements[2].placeholder='00';
                     }
@@ -63,31 +61,46 @@ HTML.img.forEach((element) => {
  });    
 });
 
-HTML.inputElements.forEach((el,i) => {
-    el.addEventListener('input',() => {
-        el.value = el.value.replace(/[^0-9.-]/g, '').replace(/(\..*)\./g, '$1').replace(/^0+/g, '').replace(/(?<!^)-/g, '');
+HTML.inputElements.forEach((e,i) => {
+    e.addEventListener('input',() => {
+        if (i != 0)
+            e.value = e.value.replace(/[^0-9.-]/g, '').replace(/(\..*)\./g, '$1').replace(/^0+/g, '').replace(/(?<!^)-/g, '');
     })
 })
 
 HTML.addTask.addEventListener('click',() => {
-    Help.toggleClass(false);
+    HELP.toggleClass(false);
 });
 
 HTML.taskDone.addEventListener('click',(e) => {
     // if every field is filled 
-    HTML.inputElements.forEach((input,i) => {
+    
+    HTML.inputElements.forEach((_,i) => {
             if (HTML.inputElements[i].value.trim() === '')
+            {
+                HTML.inputElements[i].classList.add('placeholder-red')
                 checking = false;
+            }
     });
-   
+    
+    // IF checking is done
     if(checking){
-        Help.toggleClass(true);
-        Help.clearInputs(checking);
+        HELP.toggleClass(true);
+        HELP.clearInputs(checking);
+
+        // Remove RED placeholder after task is added
+        HTML.inputElements.forEach((_,i) => {
+            if (HTML.inputElements[i].classList.contains('placeholder-red'))
+                HTML.inputElements[i].classList.remove('placeholder-red')
+        });    
+        value1 = 0
+        value2 = 0
     } 
+
     checking = true;
 });
 
 HTML.overlay.addEventListener('click',() => {
-    Help.toggleClass(true);
-    Help.clearInputs(false);
+    HELP.toggleClass(true);
+    HELP.clearInputs(false);
 });
