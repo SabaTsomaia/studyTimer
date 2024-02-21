@@ -29,35 +29,37 @@ HTML.checkDone.addEventListener('click',(e) => {
 
 HTML.img.forEach((element) => {
     element.addEventListener('click',() => {
-        switch(true) {
+        switch (true) {
             // First line of inputs
             case element.classList.contains('up-arrow1'):
+                value1 = HTML.inputElements[1].value;
                 HTML.inputElements[1].value = ++value1;
                 break;
-            
+        
             case element.classList.contains('down-arrow1'):
-                if(!value1 == 0)
-                    HTML.inputElements[1].value = --value1;
-                    if(HTML.inputElements[1].value == 0){ 
-                        HTML.inputElements[1].value = '';
-                        HTML.inputElements[1].placeholder='00';
-                    }
+                value1 = HTML.inputElements[1].value;
+                HTML.inputElements[1].value = --value1;
+                if (HTML.inputElements[1].value == 0) { 
+                    HTML.inputElements[1].value = '';
+                    HTML.inputElements[1].placeholder = '00';
+                }
                 break;
-
+        
             // second line of inputs
             case element.classList.contains('up-arrow2'):
+                value2 = HTML.inputElements[2].value;
                 HTML.inputElements[2].value = ++value2;
                 break;
-
+        
             case element.classList.contains('down-arrow2'):
-                if(!value2 == 0)    
-                    HTML.inputElements[2].value = --value2;
-                    if(HTML.inputElements[2].value == 0){ 
-                        HTML.inputElements[2].value = '';
-                        HTML.inputElements[2].placeholder='00';
-                    }
+                value2 = HTML.inputElements[2].value;
+                HTML.inputElements[2].value = --value2;
+                if (HTML.inputElements[2].value == 0) { 
+                    HTML.inputElements[2].value = '';
+                    HTML.inputElements[2].placeholder = '00';
+                }
                 break;
-    }
+        }
  });    
 });
 
