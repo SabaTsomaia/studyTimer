@@ -8,7 +8,7 @@ let minutes = 0;
 // ELEMENTS OF ACTIVE TASKS
 const tasks = []
 
-export const toggleClass = function (mode) {
+export function toggleClass(mode) {
     if(mode === true) {
         setTimeout(() => {
         HTML.taskSetting.classList.add('hidden');
@@ -21,7 +21,7 @@ export const toggleClass = function (mode) {
         },100);
     }
 }
-export const startBtn = function() {
+export function startBtn() {
     timeCur -= 1;
     let seconds = 60;
 
@@ -39,21 +39,21 @@ export const startBtn = function() {
         },1000)
 }
 
-export const stopBtn = function(){
+export function stopBtn(){
     console.log('stop');
 }
 
-export const resetBtn = function(){
+export function resetBtn(){
     console.log('reset');
 }
 
-export const taskCompleted = function(e) {
+export function taskCompleted(e) {
     /* 
     Loop through the taskList and toggle: HTML.task.classList.add('completed');
      */
 }
 
-export const deleteTask = function(e) {
+export function deleteTask(e) {
     if(e.target.classList.contains('delIcon'))
     {
         e.target.closest('.task').remove();
@@ -66,7 +66,7 @@ export const deleteTask = function(e) {
 }
 
 
-export const generateTask = function (title){  
+export function generateTask(title){  
     const html = `<div class="task">
     <img src="icons/task_alt_FILL0_wght400_GRAD0_opsz24.svg" alt="tasks" class="imgIcons" id="img-2">
         <p id="task-title" style="margin: 3px auto 0px 10px;">${title}</p>
@@ -90,7 +90,7 @@ function removeTask(){
 }
 
 
-export const clearInputs = function (checking) {
+export function clearInputs(checking) {
     HTML.inputElements.forEach((_,i) => {
         if(checking == true){
             if(i == 0)
@@ -121,6 +121,23 @@ export const clearInputs = function (checking) {
         minutes = 0
     }
 
+}
+
+export function filterInputValue(inputElement,index)
+{
+    const inputValue = inputElement.value;
+
+    // Regexp text filtering
+    if (index !== 0) {
+        // Remove non-numeric characters and ensure only one dot and one negative sign
+        const cleanedValue = inputValue
+        .replace(/[^\d-]/g, '')  // Remove non-numeric characters except '-'
+        .replace(/^(-?)0+(?=\d)/, '$1')  // Remove leading zeros and retain a leading negative sign
+        .replace(/(?<=^.*)-/g, '');  // Remove lone negative signs not at the beginning
+
+        // Update the input value
+        inputElement.value = cleanedValue;
+    }
 }
 
 //export {toggleClass,clearInputs,startBtn,resetBtn,stopBtn,deleteTask,taskCompleted}

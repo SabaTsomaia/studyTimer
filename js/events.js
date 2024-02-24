@@ -63,10 +63,9 @@ HTML.img.forEach((element) => {
  });    
 });
 
-HTML.inputElements.forEach((e,i) => {
-    e.addEventListener('input',() => {
-        if (i != 0)
-            e.value = e.value.replace(/[^0-9.-]/g, '').replace(/(\..*)\./g, '$1').replace(/^0+/g, '').replace(/(?<!^)-/g, '');
+HTML.inputElements.forEach((inputElement,index) => {
+    inputElement.addEventListener('input',() => {
+        HELP.filterInputValue(inputElement,index)
     })
 })
 
