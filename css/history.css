@@ -1,0 +1,14 @@
+header {
+    margin: auto;
+    width: 220px;
+    font-family: 'Inter', sans-serif;
+    margin-top: 30px;
+    font-weight: 200;
+}
+p{
+    font-size: 2rem;   
+    font-weight: 200;
+}
+main{
+    display: flex;
+}

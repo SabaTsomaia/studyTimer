@@ -5,3 +5,11 @@
     background-color: #F0E7D8;
     text-align: center;
 }
+a{
+    color: #352e2b;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -12,14 +12,6 @@ header, button,#task-title,#session-num {
     font-size: 1.6rem;
     outline: none;
 }
-a{
-    color: #352e2b;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: none;
-    cursor: pointer;
-}
 .mainContent {
     margin-top: 60px;
 }
