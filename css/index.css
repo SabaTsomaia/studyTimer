@@ -1,13 +1,6 @@
-*,body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #F0E7D8;
-    text-align: center;
-}
 header {
     margin: auto;
-    width: 400px;
+    width: 220px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,6 +10,7 @@ header {
 }
 header, button,#task-title,#session-num {
     font-size: 1.6rem;
+    outline: none;
 }
 a{
     color: #352e2b;
@@ -144,7 +138,6 @@ img {
     border: none;
     background-color: transparent;
     width: 50%;
-    outline: none;
     color: black;
 }
 input.placeholder-red::placeholder {
@@ -155,7 +148,6 @@ input.placeholder-red::placeholder {
     width: 95px; 
     text-align: center;
     border: none;
-    outline: none;
     font-size: 17px;
 }
 .time-session > img {
